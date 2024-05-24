@@ -42,8 +42,7 @@ async function scrapeHughesDataAfterLogin() {
     "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
 
   const browser = await puppeteer.launch({
-    headless: false,
-    executablePath: browserPath,
+    dumpio: true,
   });
   const page = await browser.newPage();
 
