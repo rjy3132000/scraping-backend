@@ -38,7 +38,8 @@ async function scrapeHughesDataAfterLogin() {
     "water heaters",
   ];
 
-  let browserPath = "\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
+  let browserPath =
+    "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
 
   const browser = await puppeteer.launch({
     headless: false,
