@@ -1,6 +1,11 @@
 const puppeteer = require("puppeteer");
-const path = require("path");
 const { productRecordsSaveInDB } = require("../utlis/saveProductData");
+
+module.exports = function (config) {
+  config.set({
+    browsers: ["ChromeHeadless"],
+  });
+};
 
 async function hughesLogin(username, password, page) {
   const loginUrl =
@@ -39,10 +44,7 @@ async function scrapeHughesDataAfterLogin() {
     "water heaters",
   ];
 
-  const browser = await puppeteer.launch({
-    executablePath: puppeteer.executablePath(),
-    headless: true,
-  });
+  const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
 
   const username = process.env.HugheshUserName || "mlcole@griffinbros.com";
