@@ -44,7 +44,7 @@ async function scrapeHughesDataAfterLogin() {
     "water heaters",
   ];
 
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
   const username = process.env.HugheshUserName || "mlcole@griffinbros.com";
