@@ -37,7 +37,14 @@ async function scrapeHughesDataAfterLogin() {
     "Water heater pan",
     "water heaters",
   ];
-  const browser = await puppeteer.launch({ headless: false });
+
+  let browserPath = "/path/to/browser/executable";
+  browserPath = process.argv[2];
+
+  const browser = await puppeteer.launch({
+    headless: false,
+    executablePath: browserPath,
+  });
   const page = await browser.newPage();
 
   const username = process.env.HugheshUserName || "mlcole@griffinbros.com";
