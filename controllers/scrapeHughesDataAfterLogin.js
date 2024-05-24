@@ -1,4 +1,5 @@
 const puppeteer = require("puppeteer");
+const path = require("path");
 const { productRecordsSaveInDB } = require("../utlis/saveProductData");
 
 async function hughesLogin(username, password, page) {
@@ -38,11 +39,15 @@ async function scrapeHughesDataAfterLogin() {
     "water heaters",
   ];
 
-  let browserPath =
-    "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
+  const pathToExtension = path.join(process.cwd(), "my-extension");
 
   const browser = await puppeteer.launch({
     dumpio: true,
+    args: [
+      `--disable-extensions-except=${pathToExtension}`,
+      `--load-extension=${pathToExtension}`,
+      "--no-sandbox",
+    ],
   });
   const page = await browser.newPage();
 
