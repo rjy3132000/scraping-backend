@@ -39,15 +39,9 @@ async function scrapeHughesDataAfterLogin() {
     "water heaters",
   ];
 
-  const pathToExtension = path.join(process.cwd(), "my-extension");
-
   const browser = await puppeteer.launch({
-    dumpio: true,
-    args: [
-      `--disable-extensions-except=${pathToExtension}`,
-      `--load-extension=${pathToExtension}`,
-      "--no-sandbox",
-    ],
+    executablePath: puppeteer.executablePath(),
+    headless: true,
   });
   const page = await browser.newPage();
 
