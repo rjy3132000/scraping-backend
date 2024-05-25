@@ -1,12 +1,6 @@
 const puppeteer = require("puppeteer");
 const { productRecordsSaveInDB } = require("../utlis/saveProductData");
 
-module.exports = function (config) {
-  config.set({
-    browsers: ["ChromeHeadless"],
-  });
-};
-
 async function hughesLogin(username, password, page) {
   const loginUrl =
     process.env.HugheshPageURL || "https://hughesstatesville.com/login";
